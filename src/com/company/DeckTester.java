@@ -1,3 +1,4 @@
+package com.company;
 /**
  * This is a class that tests the Deck class.
  */
