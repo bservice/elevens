@@ -1,4 +1,5 @@
 package com.company;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -31,14 +32,14 @@ public class Deck {
 	 * @param values is an array containing all of the card point values.
 	 */
 	public Deck(String[] ranks, String[] suits, int[] values) {
-     /* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-		this.cards = new ArrayList<Card>();
-		for (int i1 = 0; i1 < ranks.length; i1++ )
-		{
-			Card testCard = new Card(ranks[i1], suits[i1], values[i1]);
-			this.cards.add(testCard);
+		cards = new ArrayList<Card>();
+		for (int j = 0; j < ranks.length; j++) {
+			for (String suitString : suits) {
+				cards.add(new Card(ranks[j], suitString, values[j]));
+			}
 		}
-		this.size = this.cards.size();
+		size = cards.size();
+		shuffle();
 	}
 
 
@@ -47,15 +48,7 @@ public class Deck {
 	 * @return true if this deck is empty, false otherwise.
 	 */
 	public boolean isEmpty() {
-     /* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-		if (cards.size() == 0)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return size == 0;
 	}
 
 	/**
@@ -63,8 +56,7 @@ public class Deck {
 	 * @return the number of undealt cards in this deck.
 	 */
 	public int size() {
-     /* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-		return this.cards.size();
+		return size;
 	}
 
 	/**
@@ -72,7 +64,7 @@ public class Deck {
 	 * and reset the size to represent the entire deck.
 	 */
 	public void shuffle() {
-     /* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
+		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
 	}
 
 	/**
@@ -81,13 +73,12 @@ public class Deck {
 	 *         previously dealt.
 	 */
 	public Card deal() {
-     /* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-		this.size = this.cards.size() - 1;
-		if (size > 0)
-		{
-			return this.cards.get(this.size);
+		if (isEmpty()) {
+			return null;
 		}
-		return null;
+		size--;
+		Card c = cards.get(size);
+		return c;
 	}
 
 	/**
