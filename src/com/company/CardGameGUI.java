@@ -1,3 +1,5 @@
+package com.company;
+
 import java.awt.Point;
 import java.awt.Graphics;
 import java.awt.Dimension;
